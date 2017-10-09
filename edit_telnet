@@ -67,30 +67,39 @@ def run_telnet_session():
                 if f == ip59:
                         id59 += 1
                 elif f == ip65:
+                w = s.split('\n')
+                w = w[-3]
+                d = w.split(' ')
+                m = d[-1]
+                f = m[:-1]
+#               print(f)
+                if f == ip59:
+                        id59 += 1
+                elif f == ip65:
                         id65 += 1
                 elif f == ip67:
                         id67 += 1
                 elif f == ip68:
                         id68 += 1
-                elif f =='ip70':
+                elif f == ip70:
                         id70 += 1
-                elif f == 'ip79':
+                elif f == ip79:
                         id79 += 1
-                elif f == 'ip80':
+                elif f == ip80:
                         id80 += 1
-                elif f == 'ip767':
+                elif f == ip767:
                         id767 += 1
-                elif f == 'ip768':
+                elif f == ip768:
                         id768 += 1
-                elif f == 'ip769':
+                elif f == ip769:
                         id769 += 1
-                elif f == 'ip770':
+                elif f == ip770:
                         id770 += 1
-                elif f == 'ip771':
+                elif f == ip771:
                         id771 += 1
-                elif f == 'ip772':
+                elif f == ip772:
                         id772 += 1
-                elif f == 'ip773':
+                elif f == ip773:
                         id773 += 1
                 else:
                         id774 += 1
@@ -102,13 +111,3 @@ def run_telnet_session():
         print('id79 has ' + str(id79) + ' addresses assotiated')
         print('id80 has ' + str(id80) + ' addresses assotiated')
         print('id767 has ' + str(id767) + ' addresses assotiated')
-        print('id768 has ' + str(id768) + ' addresses assotiated')
-        print('id769 has ' + str(id769) + ' addresses assotiated')
-        print('id770 has ' + str(id770) + ' addresses assotiated')
-        print('id771 has ' + str(id771) + ' addresses assotiated')
-        print('id772 has ' + str(id772) + ' addresses assotiated')
-        print('id773 has ' + str(id773) + ' addresses assotiated')
-        print('id774 has ' + str(id774) + ' addresses assotiated')
-
-if __name__ == '__main__':
-        run_telnet_session()
