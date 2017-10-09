@@ -1,0 +1,63 @@
+import getpass
+import telnetlib
+import time
+
+#addr = open('add1', 'rt')
+#ips = addr.read()
+#list = ips.split('\n')
+
+def run_telnet_session():
+        id59 = 0
+        id65 = 0
+        id67 = 0
+        id68 = 0
+        id70 = 0
+        id79 = 0
+        id80 = 0
+        id767 = 0
+        id768 = 0
+        id769 = 0
+        id770 = 0
+        id771 = 0
+        id772 = 0
+        id773 = 0
+        id774 = 0
+        ip59 = '10.21.138.36'
+        ip65 = '10.21.138.34'
+        ip67 = '10.21.138.41'
+        ip68 = '10.21.138.42'
+        ip70 = '10.21.138.40'
+        ip79 = '10.21.138.28'
+        ip80 = '10.21.138.29'
+        ip767 = '10.41.30.71'
+        ip768 = '10.41.30.72'
+        ip769 = '10.41.30.73'
+        ip770 = '10.41.30.74'
+        ip771 = '10.41.30.75'
+        ip772 = '10.41.30.76'
+        ip773 = '10.41.30.77'
+        ip774 = '10.41.30.78'
+        addr = open('add1', 'rt')
+        ips = addr.read()
+        list = ips.split('\n')
+        del list[-1]
+        host = '192.168.1.84'
+        user = 'admin'
+        password = getpass.getpass()
+        session = telnetlib.Telnet(host)
+#       session.read_until("Enter password: ")
+#       session.write(password + "\n\n")
+        if password:
+                session.read_until("Enter password: ")
+                session.write(password + "\n")
+        time.sleep(3)
+        session.write("\n")
+        for ip in list:
+                session.write("/i/slb/bind\n")
+                session.write(ip + "\n")
+                session.write("255.255.255.255\n")
+                session.write("13\n")
+                s = session.read_until(">> Server Load Balancing Information#")
+                print(s)
+
+if __name__ == '__main__':
