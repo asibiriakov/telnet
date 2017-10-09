@@ -1,0 +1,114 @@
+import getpass
+import telnetlib
+import time
+
+#addr = open('add1', 'rt')
+#ips = addr.read()
+#list = ips.split('\n')
+
+def run_telnet_session():
+        id59 = 0
+        id65 = 0
+        id67 = 0
+        id68 = 0
+        id70 = 0
+        id79 = 0
+        id80 = 0
+        id767 = 0
+        id768 = 0
+        id769 = 0
+        id770 = 0
+        id771 = 0
+        id772 = 0
+        id773 = 0
+        id774 = 0
+        ip59 = '59'
+        ip65 = '65'
+        ip67 = '67'
+        ip68 = '68'
+        ip70 = '70'
+        ip79 = '79'
+        ip80 = '80'
+        ip767 = '767'
+        ip768 = '768'
+        ip769 = '769'
+        ip770 = '770'
+        ip771 = '771'
+        ip772 = '772'
+        ip773 = '773'
+        ip774 = '774'
+        addr = open('addresses', 'rt')
+        ips = addr.read()
+        list = ips.split('\n')
+        del list[-1]
+        host = '192.168.1.84'
+        user = 'admin'
+        password = getpass.getpass()
+        session = telnetlib.Telnet(host)
+#       session.read_until("Enter password: ")
+#       session.write(password + "\n\n")
+        if password:
+                session.read_until("Enter password: ")
+                session.write(password + "\n")
+        time.sleep(3)
+        session.write("\n")
+        for ip in list:
+                session.write("/i/slb/bind\n")
+                session.write(ip + "\n")
+                session.write("255.255.255.255\n")
+                session.write("13\n")
+                s = session.read_until(">> Server Load Balancing Information#")
+                w = s.split('\n')
+                w = w[-3]
+                d = w.split(' ')
+                m = d[-1]
+                f = m[:-1]
+#               print(f)
+                if f == ip59:
+                        id59 += 1
+                elif f == ip65:
+                        id65 += 1
+                elif f == ip67:
+                        id67 += 1
+                elif f == ip68:
+                        id68 += 1
+                elif f =='ip70':
+                        id70 += 1
+                elif f == 'ip79':
+                        id79 += 1
+                elif f == 'ip80':
+                        id80 += 1
+                elif f == 'ip767':
+                        id767 += 1
+                elif f == 'ip768':
+                        id768 += 1
+                elif f == 'ip769':
+                        id769 += 1
+                elif f == 'ip770':
+                        id770 += 1
+                elif f == 'ip771':
+                        id771 += 1
+                elif f == 'ip772':
+                        id772 += 1
+                elif f == 'ip773':
+                        id773 += 1
+                else:
+                        id774 += 1
+        print('id59 has ' + str(id59) + ' addresses assotiated')
+        print('id65 has ' + str(id65) + ' addresses assotiated')
+        print('id67 has ' + str(id67) + ' addresses assotiated')
+        print('id68 has ' + str(id68) + ' addresses assotiated')
+        print('id70 has ' + str(id70) + ' addresses assotiated')
+        print('id79 has ' + str(id79) + ' addresses assotiated')
+        print('id80 has ' + str(id80) + ' addresses assotiated')
+        print('id767 has ' + str(id767) + ' addresses assotiated')
+        print('id768 has ' + str(id768) + ' addresses assotiated')
+        print('id769 has ' + str(id769) + ' addresses assotiated')
+        print('id770 has ' + str(id770) + ' addresses assotiated')
+        print('id771 has ' + str(id771) + ' addresses assotiated')
+        print('id772 has ' + str(id772) + ' addresses assotiated')
+        print('id773 has ' + str(id773) + ' addresses assotiated')
+        print('id774 has ' + str(id774) + ' addresses assotiated')
+
+if __name__ == '__main__':
+        run_telnet_session()
