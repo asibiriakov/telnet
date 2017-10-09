@@ -1,0 +1,22 @@
+import getpass
+import getpass
+import telnetlib
+import time
+
+def run_telnet_session():
+        host = '10.210.5.94'
+        user = raw_input("Enter your remote account: ")
+        password = getpass.getpass()
+        session = telnetlib.Telnet(host)
+#       session.read_until("Enter password: ")
+#       session.write(password + "\n\n")
+        if password:
+                session.read_until("Enter password: ")
+                session.write(password + "\n")
+        time.sleep(3)
+        session.write("\n" + "diff\n")
+        s = session.read_until("new config.")
+        print(s)
+
+if __name__ == '__main__':
+        run_telnet_session()
