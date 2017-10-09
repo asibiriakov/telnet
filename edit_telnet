@@ -67,15 +67,6 @@ def run_telnet_session():
                 if f == ip59:
                         id59 += 1
                 elif f == ip65:
-                w = s.split('\n')
-                w = w[-3]
-                d = w.split(' ')
-                m = d[-1]
-                f = m[:-1]
-#               print(f)
-                if f == ip59:
-                        id59 += 1
-                elif f == ip65:
                         id65 += 1
                 elif f == ip67:
                         id67 += 1
@@ -111,3 +102,13 @@ def run_telnet_session():
         print('id79 has ' + str(id79) + ' addresses assotiated')
         print('id80 has ' + str(id80) + ' addresses assotiated')
         print('id767 has ' + str(id767) + ' addresses assotiated')
+        print('id768 has ' + str(id768) + ' addresses assotiated')
+        print('id769 has ' + str(id769) + ' addresses assotiated')
+        print('id770 has ' + str(id770) + ' addresses assotiated')
+        print('id771 has ' + str(id771) + ' addresses assotiated')
+        print('id772 has ' + str(id772) + ' addresses assotiated')
+        print('id773 has ' + str(id773) + ' addresses assotiated')
+        print('id774 has ' + str(id774) + ' addresses assotiated')
+
+if __name__ == '__main__':
+        run_telnet_session()
